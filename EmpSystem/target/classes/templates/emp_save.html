@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+ 
+li {
+  float: left;
+}
+ 
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+ 
+li a:hover:not(.active) {
+  background-color: #111;
+}
+ 
+.active {
+  background-color: rgb(0, 128, 192);
+}
+</style>
+</head>
+<body>
+<div>
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#news">AddEmp</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+</div>
+<div>
+	<center><h2>Add Employee</h2></center>
+	<th:block th:if="${session.msg}">
+	<p><center>[[${session.msg}]]</center></p>
+	<th:block th:if="${@empServiceImpl.removeSessionMessage()}">
+	</th:block>
+ 
+</div>
+<div>
+	<center><form action="saveEmp" method="post">
+		<table>
+			<tr>
+				<td>FullName</td>
+				<td><input type="text"name="name"></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><input type="text"name="address"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td><input type="radio"name="gender"value="male">Male</td>
+				<td><input type="radio"name="gender"value="female">Female</td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password"name="password"></td>
+			</tr>
+			<tr>
+				<td><input type="submit"value="Submit"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+</div>
+</body>
+</html>
